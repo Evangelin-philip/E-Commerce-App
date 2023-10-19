@@ -1,0 +1,1 @@
+react boottsrap, bootwatch,fontawesome, router dom install
