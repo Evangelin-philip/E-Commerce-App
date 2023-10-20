@@ -10,6 +10,9 @@ function Header() {
   // state.wishlistReducers indicate update state/initial state 
   const wishlist_count=useSelector((state)=>state.wishlistReducers)
 
+  // Changing cart count
+  const cart_count=useSelector((state)=>state.cartReducers)
+
   console.log("wishlist_count",wishlist_count)
   return (
     <Navbar expand="lg" className="bg-info ">
@@ -48,7 +51,7 @@ function Header() {
             {/* <Nav.Link href="#link">Link</Nav.Link> */}
             <Nav.Link className="border rounded btn ms-3" ><Link className="d-flex align-items-center" to={'/cart'} style={{color:"white",textDecoration:"none",fontWeight:'bold'}}>
             <i class="fa-solid fa-cart-shopping text-warning me-2"></i> Cart
-            <Badge className="rounded ms-2" bg='light'>5</Badge></Link></Nav.Link>
+            <Badge className="rounded ms-2" bg='light'>{cart_count.length}</Badge></Link></Nav.Link>
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">

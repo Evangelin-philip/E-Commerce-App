@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import {Row,Col,Card,Button} from 'react-bootstrap'
 import useFetch from '../Hooks/useFetch'
-import { addToWishlist } from '../redux/wishlistSlice';
+import { addToWishlist } from '../redux/slice/wishlistSlice';
 import { useDispatch } from 'react-redux';
+import { addToCart } from '../redux/slice/cartSlice';
 
 function Home() {
 
@@ -11,7 +12,7 @@ function Home() {
   const data=useFetch("https://dummyjson.com/products")
   console.log("data"+data);
   return (
-    <Row className='text-info ms-5'>
+    <Row className='text-info  ms-3'>
       {
         // as we dget data need to display as cards, no of cards= no of products
         data?.length>0?data?.map((product,index)=>(
@@ -29,8 +30,8 @@ function Home() {
               </div>
             </Card.Text>
             <div className='d-flex justify-content-between'>
-              <Button onClick={()=>{dispatch(addToWishlist(product))}} className='btn btn-transparent' variant="transparent"><i class="fa-solid fa-heart text-danger fa-2x"></i></Button>
-              <Button  className='btn btn-transparent' variant="transparent"><i class="fa-solid fa-cart-plus text-success fa-2x"></i></Button>
+              <Button onClick={()=>dispatch(addToWishlist(product))} className='btn btn-transparent' variant="transparent"><i class="fa-solid fa-heart text-danger fa-2x"></i></Button>
+              <Button onClick={()=>dispatch(addToCart(product))} className='btn btn-transparent' variant="transparent"><i class="fa-solid fa-cart-plus text-success fa-2x"></i></Button>
             </div>
           </Card.Body>
         </Card>
